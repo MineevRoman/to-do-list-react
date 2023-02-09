@@ -1,6 +1,6 @@
 {
   "homepage": "https://github.com/MineevRoman/to-do-list-react",
-  "name": "99-temolate",
+  "name": "todo-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "deploy master": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [
