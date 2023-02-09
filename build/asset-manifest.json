@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/MineevRoman/to-do-list-react/static/css/main.b60a4e4e.css",
-    "main.js": "/MineevRoman/to-do-list-react/static/js/main.5e09872e.js",
-    "index.html": "/MineevRoman/to-do-list-react/index.html",
-    "main.b60a4e4e.css.map": "/MineevRoman/to-do-list-react/static/css/main.b60a4e4e.css.map",
-    "main.5e09872e.js.map": "/MineevRoman/to-do-list-react/static/js/main.5e09872e.js.map"
+    "main.css": "/to-do-list-react/static/css/main.b60a4e4e.css",
+    "main.js": "/to-do-list-react/static/js/main.5e09872e.js",
+    "index.html": "/to-do-list-react/index.html",
+    "main.b60a4e4e.css.map": "/to-do-list-react/static/css/main.b60a4e4e.css.map",
+    "main.5e09872e.js.map": "/to-do-list-react/static/js/main.5e09872e.js.map"
   },
   "entrypoints": [
     "static/css/main.b60a4e4e.css",
