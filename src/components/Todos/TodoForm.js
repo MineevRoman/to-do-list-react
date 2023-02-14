@@ -21,7 +21,12 @@ function TodoForm({ addTodo }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="add" title="Add" disabled={!text}>
+        <button
+          className={styles.addButton}
+          type="add"
+          title="Add"
+          disabled={!text}
+        >
           Add
         </button>
       </form>

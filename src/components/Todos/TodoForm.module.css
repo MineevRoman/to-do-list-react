@@ -18,7 +18,7 @@
   border-radius: 5px;
 }
 
-button {
+.addButton {
   margin-left: 20px;
   height: 50px;
   cursor: pointer;
@@ -30,11 +30,11 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
+.addButton:hover {
   box-shadow: 5px 4px 15px rgba(0, 0, 0, 0.24);
 }
 
-button:active {
+.addButton:active {
   transform: scale(0.98);
   box-shadow: none;
 }

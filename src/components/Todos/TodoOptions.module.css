@@ -1,0 +1,20 @@
+.todoOptions {
+  text-align: left;
+}
+
+.copletedText {
+  margin-left: 4px;
+  font-size: 18px;
+  width: 50px;
+  color: gray;
+}
+
+.sortButtons {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.clearButtons {
+  display: inline-block;
+  margin-left: 50px;
+}
