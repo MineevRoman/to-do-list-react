@@ -4,18 +4,20 @@ const Button = ({
   children,
   handler,
   name,
-  activeButton,
+  activeButton = false,
   setActiveButton,
-  reversTodo,
 }) => {
   return (
     <button
       name={name}
       onClick={(e) => {
-        handler();
         if (!e.target.name) return;
-        if (e.target.name === activeButton) reversTodo();
-        setActiveButton(e.target.name);
+        if (e.target.name === activeButton) {
+          handler("revers");
+        } else {
+          handler(name);
+        }
+        if (activeButton) setActiveButton(e.target.name);
       }}
       className={`${styles.optionsButton} ${
         name && activeButton === name ? styles.activeButton : ""

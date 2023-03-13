@@ -1,18 +1,25 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList.js";
 import "./App.css";
 import TodoOptions from "./components/Todos/TodoOptions";
+import sortTodo from "./components/sortTodo";
+import { nanoid } from "nanoid";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const storage = JSON.parse(localStorage.getItem("todoList"));
+
+  const [todos, setTodos] = useState(storage);
+
+  if (!storage || storage !== todos) {
+    localStorage.setItem("todoList", JSON.stringify(todos));
+  }
 
   const addTodoHandler = (text) => {
     const newTodo = {
       text,
       isCompleted: false,
-      id: uuidv4(),
+      id: nanoid(6),
       num: todos.length,
     };
 
@@ -33,49 +40,11 @@ function App() {
     );
   };
 
-  const sortNameHandler = () => {
-    setTodos((prev) => {
-      const sorted = [
-        ...prev.sort((a, b) => {
-          if (a.text > b.text) return 1;
-          if (a.text < b.text) return -1;
-          return 0;
-        }),
-      ];
-      return sorted;
-    });
-  };
-  const sortAutoHandler = () => {
-    setTodos((prev) => {
-      const sorted = [...prev.sort((a, b) => a.num - b.num)];
-      return sorted;
-    });
-  };
-
-  const sortComleteHandler = () => {
-    setTodos((prev) => {
-      const sorted = [
-        ...prev.sort((a, b) => {
-          if (a.isCompleted === b.isCompleted) return 0;
-          if (a.isCompleted) return 1;
-          if (b.isCompleted) return -1;
-        }),
-      ];
-      return sorted;
-    });
-  };
-
   const clearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.isCompleted));
   };
 
   const clearTodos = () => setTodos([]);
-
-  const leftTodos = todos.filter((todo) => !todo.isCompleted).length;
-
-  const reversTodo = () => {
-    setTodos([...todos.reverse()]);
-  };
 
   return (
     <div className="App">
@@ -89,13 +58,14 @@ function App() {
       />
       {!!todos.length && (
         <TodoOptions
-          leftTodos={leftTodos}
-          sortAuto={sortAutoHandler}
-          sortName={sortNameHandler}
-          sortComplete={sortComleteHandler}
+          leftTodos={todos.filter((todo) => !todo.isCompleted).length}
+          sortTodo={(metod) =>
+            setTodos((prev) => {
+              return sortTodo(prev, metod);
+            })
+          }
           clearComplete={clearCompleted}
           clearTodos={clearTodos}
-          reversTodo={reversTodo}
         />
       )}
     </div>

@@ -2,15 +2,7 @@ import { useState } from "react";
 import Button from "../UI/Button";
 import styles from "./TodoOptions.module.css";
 
-const TodoOptions = ({
-  leftTodos,
-  sortName,
-  sortAuto,
-  sortComplete,
-  clearComplete,
-  clearTodos,
-  reversTodo,
-}) => {
+const TodoOptions = ({ leftTodos, sortTodo, clearComplete, clearTodos }) => {
   const [activeButton, setActiveButton] = useState("auto");
 
   return (
@@ -23,35 +15,36 @@ const TodoOptions = ({
       <div className={styles.sortButtons}>
         <Button
           name="auto"
-          handler={sortAuto}
+          handler={(metod) => sortTodo(metod)}
           activeButton={activeButton}
           setActiveButton={setActiveButton}
-          reversTodo={reversTodo}
         >
           Auto
         </Button>
         <Button
           name="name"
-          handler={sortName}
+          handler={(metod) => sortTodo(metod)}
           activeButton={activeButton}
           setActiveButton={setActiveButton}
-          reversTodo={reversTodo}
         >
           Name
         </Button>
         <Button
           name="complete"
-          handler={sortComplete}
+          handler={(metod) => sortTodo(metod)}
           activeButton={activeButton}
           setActiveButton={setActiveButton}
-          reversTodo={reversTodo}
         >
           Complete
         </Button>
       </div>
       <div className={styles.clearButtons}>
-        <Button handler={clearComplete}>Clear complited</Button>
-        <Button handler={clearTodos}>Clear all</Button>
+        <Button name={"clear clmplete"} handler={(_) => clearComplete()}>
+          Clear complited
+        </Button>
+        <Button name={"clear all"} handler={(_) => clearTodos()}>
+          Clear all
+        </Button>
       </div>
     </div>
   );
